@@ -2,9 +2,9 @@
 #include <eosiolib/print.hpp>
 #include <map>
 #include <iterator>
-#include <iterator>
+#include <iostream>
 #include <string>
-#include <cout>
+
 
 #define DEBUG
 
