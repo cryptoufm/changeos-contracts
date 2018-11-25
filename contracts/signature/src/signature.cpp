@@ -48,9 +48,8 @@ class [[eosio::contract]] vote : public eosio::contract {
       uint64_t primary_key() const { return key.value;}
     };
   
-    typedef eosio::multi_index<"referrendum"_n, signature> signatures_index;
+    typedef eosio::multi_index<"referrendum"_n, signature> address_index;
 };
 
 
-
-EOSIO_DISPATCH( vote, (upsert) )
+EOSIO_DISPATCH( vote, (upsert))
