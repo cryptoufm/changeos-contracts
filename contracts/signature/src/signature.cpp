@@ -25,12 +25,12 @@ class referendum : public eosio::contract {
         // @abi action
         void insert(uint64_t citizen_uid, std::string volunteer_id, std::string image_hash) {
 
-            auto new_sign = petition_index.emplace( _self, [&]( auto& petition)){
+            auto new_sign = petition_index.emplace( _self, [&]( auto& petition ){
                 petition.citizen_uid = citizen_uid;
                 petition.volunteer_id = volunteer_id;
                 petition.image_hash = image_hash;
             
-            };        
+            });        
         };
 
         private:
