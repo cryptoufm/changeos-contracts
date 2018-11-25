@@ -12,7 +12,7 @@
 using namespace eosio;
 using namespace std;
 
-class signature : public eosio::contract {
+class vote : public eosio::contract {
 
     public:
         using contract::contract;
@@ -34,4 +34,4 @@ class signature : public eosio::contract {
 
 };
 
-EOSIO_ABI( signature, (addsignature) )
+EOSIO_ABI( vote, (addsignature) )
