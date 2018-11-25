@@ -43,6 +43,7 @@ class vote : public eosio::contract {
         bool verifydpi( string dpi ) {
             print( "DPI received in VERIFYDPI" );
 
+            std::map<std::string, Signature>::iterator found; 
             found = registry.find(dpi);
             if (found != registry.end()) {
                 return true;
