@@ -17,21 +17,7 @@ class vote : public eosio::contract {
   public:   
 
     using contract::contract;
-    // addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {}
-
-    private:
-        struct signature {
-            std::string citizen_uid;
-            std::string volunteer_id;
-            std::string image_hash;
-
-            std::string primary_key() const { return citizen_uid; }
-
-            EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
-
-        };
-  
-    typedef eosio::multi_index<N(signature), signature> _signature;    
+    // addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {} 
     
     void insert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
 
@@ -75,6 +61,19 @@ class vote : public eosio::contract {
              print("Signature does not exist\t");
         }
     }
+private:
+    struct signature {
+        std::string citizen_uid;
+        std::string volunteer_id;
+        std::string image_hash;
+
+        std::string primary_key() const { return citizen_uid; }
+
+        EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
+
+    };
+  
+    typedef eosio::multi_index<N(signature), signature> _signature;   
 
 };
 
