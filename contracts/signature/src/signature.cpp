@@ -43,9 +43,11 @@ class vote : public eosio::contract {
                 std::map<std::string, Signature>::iterator pos;
 
                 for (pos = registry.begin(); pos != registry.end(); ++pos){
-                    iostream::cout << "key: \"" << pos -> first << "\" "
-                         << "values : " << pos -> second.volunteerid << 
-                         << "values : " << pos -> second.imagehash << endl;
+                    
+                    print(pos -> first);
+                    // cout << "key: \"" << pos -> first << "\" "
+                    //      << "values : " << pos -> second.volunteerid << 
+                    //      << "values : " << pos -> second.imagehash << endl;
                 }
 
             } 

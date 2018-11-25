@@ -12,6 +12,11 @@
         "stdexcept": "cpp",
         "type_traits": "cpp",
         "typeinfo": "cpp",
-        "algorithm": "cpp"
+        "algorithm": "cpp",
+        "__bit_reference": "cpp",
+        "__tree": "cpp",
+        "string_view": "cpp",
+        "iterator": "cpp",
+        "set": "cpp"
     }
 }
