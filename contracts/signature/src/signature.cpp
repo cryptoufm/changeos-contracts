@@ -1,13 +1,11 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
-#include <map>
-#include <iterator>
-#include <iostream>
+#include "logger.hpp"
+#include "signature.hpp"
 #include <string>
 #define DEBUG
 
-#include "logger.hpp"
-#include "signature.hpp"
+
 
 using namespace eosio;
 using namespace std;
