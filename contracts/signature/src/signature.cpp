@@ -19,35 +19,42 @@ class vote : public eosio::contract {
     using contract::contract;
     // addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {}
 
+    private:
+        struct signature {
+            std::string citizen_uid;
+            std::string volunteer_id;
+            std::string image_hash;
+
+            std::string primary_key() const { return citizen_uid; }
+
+            EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
+
+        };
+  
+    typedef eosio::multi_index<N(signature), signature> _signature;    
     
     void insert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
-        address_index addresses(signature(citizen_uid));
-        auto iterator = addresses.find(citizen_uid);
-        if( iterator == addresses.end() )
+
+        //address_index addresses(signature(citizen_uid));
+
+        _signature signature(_self,_self);
+
+        auto iter = signature.find(citizen_uid);
+
+        if( iter == signature.end() )
         {
-            addresses.emplace(citizen_uid, [&]( auto& row ) {
-            row.citizen_uid = citizen_uid;
-            row.volunteer_id = volunteer_id;
-            row.image_hash = image_hash;
+            signature.emplace(_self,[&](auto& signature) {
+                
+                signature.citizen_uid = citizen_uid;
+                signature.volunteer_id = volunteer_id;
+                signature.image_hash = image_hash;
             });
         }
         else {
             //The user is in the table
+             print("UID already voted\t");
         }
     }
-
-
-  private:
-    struct signature {
-      std::string citizen_uid;
-      std::string volunteer_id;
-      std::string image_hash;
-
-      std::string primary_key() const { return citizen_uid; }
-      EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
-    };
-  
-    typedef eosio::multi_index<N(signature), signature> address_index;
 };
 
 
