@@ -34,4 +34,4 @@ class signature : public eosio::contract {
 
 };
 
-EOSIO_ABI( hello, (addsignature) )
+EOSIO_ABI( signature, (addsignature) )
