@@ -23,28 +23,28 @@ class referendum : public eosio::contract {
         // @abi action
         void add_signature(uint64_t citizen_uid, std::string volunteer_id, std::string image_hash) {
 
-            auto new_sign = petition_index.emplace( _self, [&]( auto& petition_sign)){
-                petition_sign.citizen_uid = citizen_uid;
-                petition_sign.volunteer_id = volunteer_id;
-                petition_sign.image_hash = image_hash;
+            auto new_sign = petition_index.emplace( _self, [&]( auto& petition)){
+                petition.citizen_uid = citizen_uid;
+                petition.volunteer_id = volunteer_id;
+                petition.image_hash = image_hash;
             
             }        
         }
 
         private:
 
-            // @abi table petition_sign i64
-            struct petition_sign {
+            // @abi table petition i64
+            struct petition {
                 name citizen_uid;
                 std::string volunteer_id;
                 std::string image_hash;
 
                 uint64_t primary_key() const { return citizen_uid.value; }
 
-                EOSLIB_SERIALIZE( petition_sign, (citizen_uid)(volunteer_id)(image_hash))
+                EOSLIB_SERIALIZE( petition, (citizen_uid)(volunteer_id)(image_hash))
             };
         
-            multi_index<N(petition_sign), petition_sign> petition_index;
+            multi_index<N(petition), petition> petition_index;
     
 };
 
