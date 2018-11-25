@@ -52,4 +52,4 @@ class vote : public eosio::contract {
 };
 
 
-EOSIO_DISPATCH( vote, (insert))
+EOSIO_ABI( vote, (insert))
