@@ -14,15 +14,16 @@ using namespace std;
 
 using namespace eosio;
 
-class vote : public eosio::contract {
+class [[eosio::contract]] vote : public eosio::contract {
 
   public:   
-    void upsert(
-    std::string citizen_uid, 
-    std::string volunteer_id, 
-    std::string image_hash, 
-    ) {
-        signatures_index addresses(_code, citizen_uid);
+
+    using contract::contract;
+    addressbook(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
+
+    [[eosio::action]]
+    void upsert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
+        address_index addresses(_code, citizen_uid);
         auto iterator = addresses.find(citizen_uid);
         if( iterator == addresses.end() )
         {
