@@ -28,23 +28,23 @@ class vote : public eosio::contract {
 
         std::map<std::string, Signature> registry; 
 
-        [[eosio::action]]
         void addsignature( string volunteerid, string citizenuid, string imagehash ) {
-            print( "DPI received: ", volunteerid, citizenuid, imagehash );
+            print( "/n DPI received: ", volunteerid, citizenuid, imagehash );
             if (verifydpi(citizenuid)) {
-                logger_info( "SUCCESS: DPI added: ", citizenuid);
+                logger_info( "/n SUCCESS: DPI added: ", citizenuid);
                 registry.insert(std::map<std::string, Signature>::value_type(citizenuid, Signature(volunteerid,imagehash)));
             } 
             else {
-                logger_info( "FAILED: DPI not added: ", citizenuid);
+                logger_info( "/n FAILED: DPI not added: ", citizenuid);
             }
         }
 
         bool verifydpi( string dpi ) {
-            print( "DPI received in VERIFYDPI" );
+            print( "/n DPI received in VERIFYDPI" );
 
             std::map<std::string, Signature>::iterator found; 
             found = registry.find(dpi);
+            logger_info( "/n Found: ", found);
             if (found == registry.end()) {
                 return true;
             }
