@@ -55,7 +55,27 @@ class vote : public eosio::contract {
              print("UID already voted\t");
         }
     }
-};
 
+    void getInfo(std::string citizen_uid) {
+
+        //address_index addresses(signature(citizen_uid));
+
+        _signature signature(_self, _self);
+
+        auto sig = signature.find(citizen_uid);
+
+        if( sig != signature.end() )
+        {
+            print(sig->citizen_uid);
+            print(sig->volunteer_id);
+            print(sig->image_hash);
+        }
+        else {
+            //The user is in the table
+             print("Signature does not exist\t");
+        }
+    }
+
+};
 
 EOSIO_ABI( vote, (insert))
