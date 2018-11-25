@@ -13,10 +13,12 @@ using namespace std;
 using namespace eosio;
 
 class referendum : public eosio::contract {
-
+    using contract::contract;
     public:   
-
-        using contract::contract;
+        referendum( account_name self) :
+            contract(self),
+            petition(_self, _self)
+            {}
 
         //referendum(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {} 
         
