@@ -44,7 +44,7 @@ class vote : public eosio::contract {
 
                 for (pos = registry.begin(); pos != registry.end(); ++pos){
                     
-                    print(pos -> first);
+                    print(pos -> first, pos -> second.volunteerid, pos -> second.imagehash);
                     // cout << "key: \"" << pos -> first << "\" "
                     //      << "values : " << pos -> second.volunteerid << 
                     //      << "values : " << pos -> second.imagehash << endl;
