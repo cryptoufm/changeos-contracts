@@ -46,6 +46,13 @@ class referendum : public eosio::contract {
             //return [iter.volunteer_id, iter.image_hash]      
         };
 
+        void allvotes() {
+            while( auto iter != petition_index.end() ) {
+                print((*iter).citizen_uid);
+                iter++;
+            }
+        };
+
         private:
 
             // @abi table petition i64
@@ -63,4 +70,4 @@ class referendum : public eosio::contract {
     
 };
 
-EOSIO_ABI( referendum, (insert)(retrieve))
+EOSIO_ABI( referendum, (insert)(retrieve)(allvotes))
