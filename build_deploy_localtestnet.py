@@ -21,4 +21,3 @@ print("----/ContractTest----")
 
 host.table("petition", host)
 #host.table("petition")
-stop()
