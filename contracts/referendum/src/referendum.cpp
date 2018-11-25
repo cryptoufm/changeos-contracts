@@ -36,24 +36,6 @@ class referendum : public eosio::contract {
             });        
         };
 
-        void retrieve(uint64_t citizen_uid) {
-
-            auto iter = petition_index.find( citizen_uid );
-            eosio_assert(iter != petition_index.end(), "Citizen vote unavailable.");
-            print((*iter).volunteer_id);
-            print((*iter).image_hash);
-            
-            //return [iter.volunteer_id, iter.image_hash]      
-        };
-
-        void allvotes() {
-            auto iter = petition_index.begin();
-            while( iter != petition_index.end() ) {
-                print((*iter).citizen_uid);
-                iter++;
-            }
-        };
-
         private:
 
             // @abi table petition i64
