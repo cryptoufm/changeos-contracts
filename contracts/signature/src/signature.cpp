@@ -48,4 +48,4 @@ class referendum : public eosio::contract {
     
 };
 
-EOSIO_ABI( vote, (add_signature))
+EOSIO_ABI( referendum, (add_signature))
