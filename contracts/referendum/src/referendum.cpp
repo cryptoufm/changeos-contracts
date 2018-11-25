@@ -1,23 +1,53 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
-
+#include "logger.hpp"
+#include "signature.hpp"
+#include <string>
 #define DEBUG
 
-#include "logger.hpp"
-#include "referendum.hpp"
+
+
+using namespace eosio;
+using namespace std;
 
 using namespace eosio;
 
-class hello : public eosio::contract {
-    public:
+class referendum : public eosio::contract {
+    public:   
         using contract::contract;
+        referendum( account_name self) :
+            contract(self),
+            petition_index(_self, _self)
+            {}
 
-        [[eosio::action]]
-        void hi( account_name user ) {
-            logger_info( "debug user name: ", name{user} );
-            require_auth( user );
-            print( "Hello, ", name{user} );
-        }
+        //referendum(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {} 
+        
+        // @abi action
+        void insert(name citizen_uid, std::string volunteer_id, std::string image_hash) {
+
+            auto new_sign = petition_index.emplace( _self, [&]( auto& petition ){
+                petition.citizen_uid = citizen_uid;
+                petition.volunteer_id = volunteer_id;
+                petition.image_hash = image_hash;
+            
+            });        
+        };
+
+        private:
+
+            // @abi table petition i64
+            struct petition {
+                name citizen_uid;
+                std::string volunteer_id;
+                std::string image_hash;
+
+                name primary_key() const { return citizen_uid; }
+
+                EOSLIB_SERIALIZE( petition, (citizen_uid)(volunteer_id)(image_hash))
+            };
+        
+            multi_index<N(petition), petition> petition_index;
+    
 };
 
-EOSIO_ABI( hello, (hi) )
+EOSIO_ABI( referendum, (insert))
