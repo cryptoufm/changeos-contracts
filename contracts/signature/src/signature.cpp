@@ -17,7 +17,7 @@ class referendum : public eosio::contract {
     public:   
         referendum( account_name self) :
             contract(self),
-            petition(_self, _self)
+            petition_index(_self, _self)
             {}
 
         //referendum(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {} 
