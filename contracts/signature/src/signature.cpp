@@ -46,6 +46,7 @@ class vote : public eosio::contract {
       std::string image_hash;
 
       std::string primary_key() const { return citizen_uid; }
+      EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
     };
   
     typedef eosio::multi_index<string registry, signature> address_index;
