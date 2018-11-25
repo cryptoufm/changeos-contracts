@@ -1,5 +1,8 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
+#include <map>
+#include <iterator>
+#include <string>
 
 #define DEBUG
 
@@ -7,17 +10,28 @@
 #include "signature.hpp"
 
 using namespace eosio;
+using namespace std;
 
-class hello : public eosio::contract {
+class signature : public eosio::contract {
+
     public:
         using contract::contract;
 
         [[eosio::action]]
-        void hi( account_name user ) {
-            logger_info( "debug user name: ", name{user} );
-            require_auth( user );
-            print( "Hello, ", name{user} );
+        void addSignature( string dpi ) {
+            print( "DPI received: ", dpi );
+            verifyDPI(dpi);
         }
+
+        bool verifyDPI( string dpi ) {
+            logger_info( "debug dpi: ", dpi);
+            return true;
+       }
+
+
+
+
+
 };
 
-EOSIO_ABI( hello, (hi) )
+EOSIO_ABI( signature, (addSignature) )
