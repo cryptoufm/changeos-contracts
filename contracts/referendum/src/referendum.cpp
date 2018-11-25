@@ -24,6 +24,9 @@ class referendum : public eosio::contract {
         
         // @abi action
         void insert(uint64_t citizen_uid, std::string volunteer_id, std::string image_hash) {
+            auto iter = petition_index.find( citizen_uid );
+
+            eosio_assert(iter == petition_index.end(), "Citizen vote already casted.");
             
             auto new_sign = petition_index.emplace( _self, [&]( auto& petition ){
                 petition.citizen_uid = citizen_uid;
@@ -37,7 +40,7 @@ class referendum : public eosio::contract {
 
             auto iter = petition_index.find( citizen_uid );
             eosio_assert(iter != petition_index.end(), "Citizen vote unavailable.");
-            print(iter)
+            print(iter);
             
             //return [iter.volunteer_id, iter.image_hash]      
         };
