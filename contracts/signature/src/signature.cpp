@@ -18,12 +18,12 @@ class hello : public eosio::contract {
         using contract::contract;
 
         [[eosio::action]]
-        void addSignature( string dpi ) {
+        void addsignature( string dpi ) {
             print( "DPI received: ", dpi );
             verifyDPI(dpi);
         }
 
-        bool verifyDPI( string dpi ) {
+        bool verifydpi( string dpi ) {
             logger_info( "debug dpi: ", dpi);
             return true;
        }
