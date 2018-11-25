@@ -42,7 +42,14 @@ class vote : public eosio::contract {
 
         bool verifydpi( string dpi ) {
             print( "DPI received in VERIFYDPI" );
-            return true;
+
+            found = registry.find(dpi);
+            if (found != registry.end()) {
+                return true
+            }
+            else {
+                return false
+            }
        }
 
 };
