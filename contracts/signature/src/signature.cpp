@@ -36,7 +36,7 @@ class vote : public eosio::contract {
                 registry.insert(std::map<std::string, Signature>::value_type(citizenuid, Signature(volunteerid,imagehash)));
             
                 for(map<std::string, Signature >::const_iterator it = registry.begin();
-                    it != registry.end(); ++it);
+                    it != registry.end(); ++it)
                 {
                     std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
                 }
