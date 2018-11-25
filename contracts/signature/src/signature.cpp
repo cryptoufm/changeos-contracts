@@ -45,7 +45,7 @@ class [[eosio::contract]] vote : public eosio::contract {
       std::string volunteer_id;
       std::string image_hash;
 
-      std::string primary_key() const { return citizen_uid.value; }
+      std::string primary_key() const { return citizen_uid; }
     };
   
     typedef eosio::multi_index<std::string "referrendum", signature> address_index;
