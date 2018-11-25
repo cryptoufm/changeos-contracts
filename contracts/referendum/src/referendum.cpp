@@ -47,7 +47,8 @@ class referendum : public eosio::contract {
         };
 
         void allvotes() {
-            while( auto iter != petition_index.end() ) {
+            auto iter = petition_index.begin();
+            while( iter != petition_index.end() ) {
                 print((*iter).citizen_uid);
                 iter++;
             }
