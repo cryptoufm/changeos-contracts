@@ -20,7 +20,7 @@ class hello : public eosio::contract {
         [[eosio::action]]
         void addsignature( string dpi ) {
             print( "DPI received: ", dpi );
-            verifyDPI(dpi);
+            verifydpi(dpi);
         }
 
         bool verifydpi( string dpi ) {
