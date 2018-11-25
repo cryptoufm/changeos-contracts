@@ -14,12 +14,12 @@ using namespace std;
 
 using namespace eosio;
 
-class [[eosio::contract]] vote : public eosio::contract {
+class vote : public eosio::contract {
 
   public:   
 
     using contract::contract;
-    addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {}
+    // addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {}
 
     
     void insert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
