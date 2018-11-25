@@ -1,7 +1,7 @@
 #include <eosiolib/eosio.hpp>
 #include <eosiolib/print.hpp>
 #include "logger.hpp"
-#include "signature.hpp"
+#include "referendum.hpp"
 #include <string>
 #define DEBUG
 
