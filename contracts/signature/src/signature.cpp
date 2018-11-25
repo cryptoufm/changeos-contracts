@@ -44,7 +44,7 @@ class vote : public eosio::contract {
 
             std::map<std::string, Signature>::iterator found; 
             found = registry.find(dpi);
-            print( "Found: ", found);
+    
             if (found == registry.end()) {
                 return true;
             }
