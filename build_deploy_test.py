@@ -21,5 +21,5 @@ contract.push_action("insert", {"citizen_uid": "3003911290101", "volunteer_id": 
 #contract.push_action("allvotes", {}, permission=host)
 print("----/ContractTest----")
 
-host.table("petition", "3001973810101")
-host.table("petition")
+host.table("petition", host)
+#host.table("petition")
