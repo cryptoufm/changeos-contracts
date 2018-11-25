@@ -49,7 +49,7 @@ class vote : public eosio::contract {
       EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
     };
   
-    typedef eosio::multi_index<string registry, signature> address_index;
+    typedef eosio::multi_index<N(signature), signature> address_index;
 };
 
 
