@@ -23,7 +23,7 @@ class vote : public eosio::contract {
 
     
     void insert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
-        address_index addresses("lago", Signature(citizen_uid, volunteer_id, image_hash));
+        address_index addresses("lago", signature(citizen_uid, volunteer_id, image_hash));
         auto iterator = addresses.find(citizen_uid);
         if( iterator == addresses.end() )
         {
