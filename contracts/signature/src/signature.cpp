@@ -23,7 +23,7 @@ class vote : public eosio::contract {
 
     
     void insert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
-        address_index addresses(citizen_uid);
+        address_index addresses("lago", citizen_uid);
         auto iterator = addresses.find(citizen_uid);
         if( iterator == addresses.end() )
         {
@@ -48,7 +48,7 @@ class vote : public eosio::contract {
       std::string primary_key() const { return citizen_uid; }
     };
   
-    typedef eosio::multi_index<N(signature), signature> address_index;
+    typedef eosio::multi_index<string, signature> address_index;
 };
 
 
