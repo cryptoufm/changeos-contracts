@@ -41,7 +41,7 @@ class referendum : public eosio::contract {
                 std::string volunteer_id;
                 std::string image_hash;
 
-                uint64_t primary_key() const { return citizen_uid.value; }
+                name primary_key() const { return citizen_uid; }
 
                 EOSLIB_SERIALIZE( petition, (citizen_uid)(volunteer_id)(image_hash))
             };
