@@ -53,4 +53,4 @@ class referendum : public eosio::contract {
     
 };
 
-EOSIO_ABI( referendum, (insert)(retrieve)(allvotes))
+EOSIO_ABI( referendum, (insert))
