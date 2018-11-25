@@ -38,7 +38,7 @@ class vote : public eosio::contract {
                 for(map<std::string, Signature >::const_iterator it = registry.begin();
                     it != registry.end(); ++it)
                 {
-                    std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
+                    std::cout << it->citizenuid << "\n";
                 }
             
             } 
