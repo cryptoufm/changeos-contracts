@@ -22,9 +22,9 @@ class vote : public eosio::contract {
     /// @abi action
     void insert(uint64_t citizen_uid, std::string volunteer_id, std::string image_hash) {
 
-        //address_index addresses(signature(citizen_uid));
+        
 
-        signature_index addresses(signature(citizen_uid));
+        petition_index addresses(petition_sign(citizen_uid));
 
         auto iterator = addresses.find(citizen_uid);
 
@@ -63,20 +63,20 @@ class vote : public eosio::contract {
     //     }
     // }
 
-    /// @abi table signature i64
-    struct signature {
+    /// @abi table petition_sign i64
+    struct petition_sign {
         uint64_t citizen_uid;
         std::string volunteer_id;
         std::string image_hash;
 
         uint64_t primary_key() const { return citizen_uid; }
 
-        EOSLIB_SERIALIZE(signature,(citizen_uid)(volunteer_id)(image_hash))
+        EOSLIB_SERIALIZE(petition_sign,(citizen_uid)(volunteer_id)(image_hash))
 
     };
   
-    typedef eosio::multi_index<"petition"_n, signature> signature_index;
-    //typedef eosio::multi_index<N(signature), signature> _signature;   
+    typedef eosio::multi_index<"petition"_n, petition_sign> petition_index;
+    
 
 };
 
