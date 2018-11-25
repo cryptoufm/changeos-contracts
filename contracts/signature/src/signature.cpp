@@ -23,7 +23,7 @@ class referendum : public eosio::contract {
         //referendum(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {} 
         
         // @abi action
-        void insert(uint64_t citizen_uid, std::string volunteer_id, std::string image_hash) {
+        void insert(name citizen_uid, std::string volunteer_id, std::string image_hash) {
 
             auto new_sign = petition_index.emplace( _self, [&]( auto& petition ){
                 petition.citizen_uid = citizen_uid;
