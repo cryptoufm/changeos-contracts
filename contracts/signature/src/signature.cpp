@@ -19,7 +19,7 @@ class [[eosio::contract]] vote : public eosio::contract {
   public:   
 
     using contract::contract;
-    addressbook(name receiver, name code,  datastream<const char*> ds): contract(receiver, code, ds) {}
+    addressbook(string citizen_uid, string volunteer_id,  datastream<const char*> ds):contract(citizen_uid, volunteer_id, ds) {}
 
     [[eosio::action]]
     void upsert(std::string citizen_uid, std::string volunteer_id, std::string image_hash) {
