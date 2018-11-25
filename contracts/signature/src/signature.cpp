@@ -32,11 +32,11 @@ class vote : public eosio::contract {
         void addsignature( string volunteerid, string citizenuid, string imagehash ) {
             print( "DPI received: ", volunteerid, citizenuid, imagehash );
             if (verifydpi(citizenuid)) {
-                logger_info( "SUCCESS: DPI added: ", dpi);
-                registry.insert(std::map<std::string, Obj>::value_type(citizenuid, Obj(volunteerid,imagehash)));
+                logger_info( "SUCCESS: DPI added: ", citizenuid);
+                registry.insert(std::map<std::string, Signature>::value_type(citizenuid, Obj(volunteerid,imagehash)));
             } 
             else {
-                logger_info( "FAILED: DPI not added: ", dpi);
+                logger_info( "FAILED: DPI not added: ", citizenuid);
             }
         }
 
