@@ -45,10 +45,10 @@ class vote : public eosio::contract {
 
             found = registry.find(dpi);
             if (found != registry.end()) {
-                return true
+                return true;
             }
             else {
-                return false
+                return false;
             }
        }
 
