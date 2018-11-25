@@ -36,22 +36,28 @@ class referendum : public eosio::contract {
             });        
         };
 
-        void retrieve(uint64_t citizen_uid) {
+        int *retrieve(uint64_t citizen_uid) {
+            
+            static int arr[2]; 
 
             auto iter = petition_index.find( citizen_uid );
             eosio_assert(iter != petition_index.end(), "Citizen vote unavailable.");
-            print((*iter).volunteer_id);
-            print((*iter).image_hash);
+            arr[0] = (*iter).volunteer_id);
+            arr[1] = (*iter).image_hash);
             
-            //return [iter.volunteer_id, iter.image_hash]      
+            return arr;
         };
 
-        void allvotes() {
+        std::vector allvotes() {
+
+            std::vector< int > arr;
+
             auto iter = petition_index.begin();
             while( iter != petition_index.end() ) {
-                print((*iter).citizen_uid);
+                arr.push_back((*iter).citizen_uid);
                 iter++;
             }
+            return 
         };
 
         private:
