@@ -41,11 +41,11 @@ class [[eosio::contract]] vote : public eosio::contract {
 
   private:
     struct [[eosio::table]] signature {
-      citizen_uid key;
+      std::string citizen_uid;
       std::string volunteer_id;
       std::string image_hash;
 
-      uint64_t primary_key() const { return key.value;}
+      std::string primary_key() const { return citizen_uid}
     };
   
     typedef eosio::multi_index<"referrendum"_n, signature> address_index;
