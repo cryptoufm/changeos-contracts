@@ -35,7 +35,7 @@ class vote : public eosio::contract {
                 logger_info( "SUCCESS: DPI added: ", citizenuid);
                 registry.insert(std::map<std::string, Signature>::value_type(citizenuid, Signature(volunteerid,imagehash)));
             
-                for(map<std::string, Signature> >::const_iterator it = registry.begin();
+                for(map<std::string, Signature >::const_iterator it = registry.begin();
                     it != registry.end(); ++it);
                 {
                     std::cout << it->first << " " << it->second.first << " " << it->second.second << "\n";
