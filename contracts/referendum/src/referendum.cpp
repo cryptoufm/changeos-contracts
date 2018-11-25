@@ -27,7 +27,7 @@ class referendum : public eosio::contract {
             auto iter = petition_index.find( citizen_uid );
 
             eosio_assert(iter == petition_index.end(), "Citizen vote already casted.");
-            
+
             auto new_sign = petition_index.emplace( _self, [&]( auto& petition ){
                 petition.citizen_uid = citizen_uid;
                 petition.volunteer_id = volunteer_id;
@@ -40,7 +40,7 @@ class referendum : public eosio::contract {
 
             auto iter = petition_index.find( citizen_uid );
             eosio_assert(iter != petition_index.end(), "Citizen vote unavailable.");
-            print(iter);
+            //print(iter);
             
             //return [iter.volunteer_id, iter.image_hash]      
         };
