@@ -48,7 +48,7 @@ class vote : public eosio::contract {
       std::string primary_key() const { return citizen_uid; }
     };
   
-    typedef eosio::multi_index<string, "referrendum", signature> address_index;
+    typedef eosio::multi_index<N(referrendum), signature> address_index;
 };
 
 
