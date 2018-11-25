@@ -36,8 +36,9 @@ class referendum : public eosio::contract {
         void retrieve(uint64_t citizen_uid) {
 
             auto iter = petition_index.find( citizen_uid );
-            print(iter.volunteer_id)
-            print(iter.image_hash)
+            eosio_assert(iter != petition_index.end(), "Citizen vote unavailable.");
+            print(iter)
+            
             //return [iter.volunteer_id, iter.image_hash]      
         };
 
